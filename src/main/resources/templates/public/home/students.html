@@ -1,12 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="public/fragments/head-elements :: headElements"></head>
+<title>eRegistrar</title>
 </head>
+
 <body>
-<h1>
-    Student
-</h1>
+
+<div th:replace="public/fragments/header :: header"></div>
+<div class="container">
+    <h3 class="mt-5">Students</h3>
+    <hr/>
+
+    <div style="
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+        margin-top: 5rem;
+">
+        <div style="min-width: 12rem; font-weight: bold; ">#</div>
+        <div style="min-width: 12rem; font-weight: bold; ">Name</div>
+        <div style="min-width: 12rem; font-weight: bold; ">Middle Name</div>
+        <div style="min-width: 12rem; font-weight: bold; ">Last Name</div>
+        <div style="min-width: 12rem; font-weight: bold; ">GBA</div>
+    </div>
+    <hr>
+    <div style="
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+" th:each="student,  current : ${students}">
+        <div style="min-width: 12rem" th:text="${current.count}"></div>
+        <div style="min-width: 12rem" th:text="${student.firstName}"></div>
+        <div style="min-width: 12rem" th:text="${student.middleName}"></div>
+        <div style="min-width: 12rem" th:text="${student.lastName}"></div>
+        <div style="min-width: 12rem" th:text="${student.cgpa}"></div>
+    </div>
+</div>
+
+<div th:replace="public/fragments/footer:: footer"></div>
 </body>
 </html>
